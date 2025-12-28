@@ -1,0 +1,3 @@
+[submodule "TamweelyClient/tamweelyHr"]
+	path = TamweelyClient/tamweelyHr
+	url = https://github.com/AshrakatSameh/HeSystem.git

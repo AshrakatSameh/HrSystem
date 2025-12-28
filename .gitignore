@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# Node / Angular
+node_modules/
+dist/
+*.log
+
+# Nested git repos
+TamweelyClient/tamweelyHr/.git
+TamweelyClient/tamweelyHr/.git
