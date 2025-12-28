@@ -1,0 +1,61 @@
+<div class="login-container d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card shadow" style="width: 100%; max-width: 400px;">
+    <div class="card-body p-5">
+      <div class="text-center mb-4">
+        <i class="bi bi-briefcase" style="font-size: 3rem; color: #0d6efd;"></i>
+        <h2 class="mt-3">Tamweely HR</h2>
+        <p class="text-muted">Sign in to your account</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onLogin()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            formControlName="username"
+            placeholder="Enter your username"
+            [class.is-invalid]="isFieldInvalid('username')"
+          />
+          <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('username')">
+            Username is required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            [class.is-invalid]="isFieldInvalid('password')"
+          />
+          <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('password')">
+            Password is required
+          </div>
+        </div>
+
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg"
+            [disabled]="loading || !form.valid"
+          >
+            <span *ngIf="!loading">Sign In</span>
+            <span *ngIf="loading">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Signing in...
+            </span>
+          </button>
+        </div>
+
+        <p class="text-center mt-3 text-muted small">
+          Demo credentials: username: <strong>admin</strong>, password: <strong>password</strong>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

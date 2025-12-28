@@ -1,0 +1,30 @@
+<nav class="sidebar bg-light border-end">
+  <div class="sidebar-sticky p-3">
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2" *ngIf="isAuthenticated$ | async">
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-speedometer2 me-2"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item mb-2" *ngIf="isAuthenticated$ | async">
+        <a routerLink="/employees" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-people me-2"></i>
+          Employees
+        </a>
+      </li>
+      <li class="nav-item mb-2" *ngIf="(isAdmin$ | async)">
+        <a routerLink="/departments" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-diagram-3 me-2"></i>
+          Departments
+        </a>
+      </li>
+      <li class="nav-item mb-2" *ngIf="(isAdmin$ | async)">
+        <a routerLink="/jobs" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-briefcase me-2"></i>
+          Jobs
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

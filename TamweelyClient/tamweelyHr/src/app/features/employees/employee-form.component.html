@@ -1,0 +1,140 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ isEdit ? 'Edit Employee' : 'Add New Employee' }}</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="firstName" class="form-label">First Name *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+          [class.is-invalid]="isFieldInvalid('firstName')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('firstName')">
+          First name is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="lastName" class="form-label">Last Name *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName"
+          [class.is-invalid]="isFieldInvalid('lastName')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('lastName')">
+          Last name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          [class.is-invalid]="isFieldInvalid('email')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('email')">
+          Valid email is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number *</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          placeholder="01XXXXXXXXX"
+          [class.is-invalid]="isFieldInvalid('phoneNumber')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('phoneNumber')">
+          Valid phone number is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="dateOfBirth" class="form-label">Date of Birth *</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dateOfBirth"
+          formControlName="dateOfBirth"
+          [class.is-invalid]="isFieldInvalid('dateOfBirth')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('dateOfBirth')">
+          Date of birth is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="hireDate" class="form-label">Hire Date *</label>
+        <input
+          type="date"
+          class="form-control"
+          id="hireDate"
+          formControlName="hireDate"
+          [class.is-invalid]="isFieldInvalid('hireDate')"
+        />
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('hireDate')">
+          Hire date is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="departmentId" class="form-label">Department *</label>
+        <select
+          class="form-select"
+          id="departmentId"
+          formControlName="departmentId"
+          [class.is-invalid]="isFieldInvalid('departmentId')"
+        >
+          <option value="">Select Department</option>
+          <option *ngFor="let dept of departments" [value]="dept.id">{{ dept.name }}</option>
+        </select>
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('departmentId')">
+          Department is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="jobId" class="form-label">Job Title *</label>
+        <select
+          class="form-select"
+          id="jobId"
+          formControlName="jobId"
+          [class.is-invalid]="isFieldInvalid('jobId')"
+        >
+          <option value="">Select Job Title</option>
+          <option *ngFor="let job of jobs" [value]="job.id">{{ job.title }}</option>
+        </select>
+        <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('jobId')">
+          Job title is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="dismiss()">Cancel</button>
+    <button type="submit" class="btn btn-primary" [disabled]="loading || !form.valid">
+      <span *ngIf="!loading">{{ isEdit ? 'Update' : 'Create' }}</span>
+      <span *ngIf="loading">
+        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Saving...
+      </span>
+    </button>
+  </div>
+</form>

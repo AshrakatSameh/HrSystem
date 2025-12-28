@@ -1,0 +1,30 @@
+.table {
+  background: white;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.pagination {
+  gap: 0.25rem;
+}
+
+.page-link {
+  border-radius: 0.25rem;
+  border: 1px solid #dee2e6;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
